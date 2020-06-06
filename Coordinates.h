@@ -1,7 +1,3 @@
-//
-// Created by timofey on 03.06.2020.
-//
-
 #ifndef RECTANGLEPACKING_COORDINATES_H
 #define RECTANGLEPACKING_COORDINATES_H
 

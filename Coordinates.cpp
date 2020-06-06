@@ -1,7 +1,3 @@
-//
-// Created by timofey on 03.06.2020.
-//
-
 #include "Coordinates.h"
 #include "Rectangle.h"
 

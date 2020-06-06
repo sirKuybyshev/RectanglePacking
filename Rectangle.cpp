@@ -1,7 +1,3 @@
-//
-// Created by timofey on 03.06.2020.
-//
-
 #include "Rectangle.h"
 int Rectangle::getHeight() const {
     return scales[2];

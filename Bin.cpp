@@ -1,7 +1,3 @@
-//
-// Created by timofey on 04.06.2020.
-//
-
 #include "Bin.h"
 
 

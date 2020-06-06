@@ -1,7 +1,3 @@
-//
-// Created by timofey on 04.06.2020.
-//
-
 #ifndef RECTANGLEPACKING_BIN_H
 #define RECTANGLEPACKING_BIN_H
 

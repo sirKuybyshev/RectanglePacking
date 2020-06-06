@@ -1,7 +1,3 @@
-//
-// Created by timofey on 03.06.2020.
-//
-
 #ifndef RECTANGLEPACKING_RECTANGLE_H
 #define RECTANGLEPACKING_RECTANGLE_H
 #include <stdexcept>
