@@ -15,8 +15,11 @@ bool place(vectorIt begin, vectorIt end, Bin &storage, const Coordinates& lastBa
     } else {
         begin++;
         bool success = place(begin, end, storage);
-        begin--;
         while (!success) {
+            bool check = ((*begin).Rotate());
+            if (!check) {
+                begin--;
+            }
             coord = unperformedStorage.add(*begin, coord);
             if (coord.first() == -1) {
                 return false;

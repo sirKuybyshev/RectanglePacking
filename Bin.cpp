@@ -44,23 +44,23 @@ void Bin::emplace(const Rectangle &rectangle, const Coordinates &coordinates) {
     }
 }
 
-Coordinates Bin::findFit(Rectangle rectangle, const Coordinates &lastCube) {
-    Coordinates coord = lastCube.next(width, length, height);
+Coordinates Bin::findFit(const Rectangle& rectangle, const Coordinates &lastCube) {
+    Coordinates coord = lastCube.next(scales[0], scales[1], scales[2]);
     while (coord.first() != -1) {
         int x = coord.first(), y = coord.second(), z = coord.third();
         if (elementaryCubes[x][y][z] == CubeType::FREE && isFitting(rectangle, {x, y, z})) {
             break;
         }
-        coord = coord.next(width, length, height);
+        coord = coord.next(scales[0], scales[1], scales[2]);
     }
     return coord;
 }
 
 bool Bin::isFitting(const Rectangle &rectangle, const Coordinates &coordinates) {
     int x = coordinates.first(), y = coordinates.second(), z = coordinates.third();
-    if ((coordinates.first() + rectangle.getWidth() > width) ||
-        ((coordinates.second() + rectangle.getLength()) > length) ||
-        ((coordinates.third() + rectangle.getHeight()) > height)) {
+    if ((coordinates.first() + rectangle.getWidth() > scales[0]) ||
+        ((coordinates.second() + rectangle.getLength()) > scales[1]) ||
+        ((coordinates.third() + rectangle.getHeight()) > scales[2])) {
         return false;
     }
     while (x < coordinates.first() + rectangle.getWidth()) {

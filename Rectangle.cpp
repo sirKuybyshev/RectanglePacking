@@ -4,19 +4,22 @@
 
 #include "Rectangle.h"
 int Rectangle::getHeight() const {
-    return height;
+    return scales[2];
 }
 int Rectangle::getLength() const {
-    return length;
+    return scales[1];
 }
 int Rectangle::getWidth() const {
-    return width;
+    return scales[0];
 }
+
 Rectangle::Rectangle(int w, int l, int h) {
     if ((w <= 0) || (l <= 0) || (h <= 0)) {
         throw std::out_of_range("Negative scale");
     }
-    height = h;
-    width = w;
-    length = l;
+    scales = {w, l, h};
+    std::sort(scales.begin(), scales.end());
+}
+bool Rectangle::Rotate() {
+    return std::next_permutation(scales.begin(), scales.end());
 }

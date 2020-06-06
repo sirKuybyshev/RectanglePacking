@@ -21,7 +21,7 @@ private:
     std::vector<std::vector<std::vector<CubeType>>> elementaryCubes;
     void emplace(const Rectangle &rectangle, const Coordinates &coordinates);
     bool isFitting(const Rectangle &rectangle, const Coordinates &coordinates);
-    Coordinates findFit(Rectangle rectangle, const Coordinates& badCube);
+    Coordinates findFit(const Rectangle& rectangle, const Coordinates& badCube);
 
 public:
     Bin(int w, int l, int h);

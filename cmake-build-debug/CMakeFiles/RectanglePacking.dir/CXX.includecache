@@ -29,4 +29,14 @@ vector
 /home/timofey/CLionProjects/RectanglePacking/Rectangle.h
 stdexcept
 -
+algorithm
+-
+vector
+-
+
+/home/timofey/CLionProjects/RectanglePacking/main.cpp
+iostream
+-
+Bin.h
+/home/timofey/CLionProjects/RectanglePacking/Bin.h
 
