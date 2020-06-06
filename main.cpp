@@ -55,6 +55,7 @@ int main() {
         return max(lhs.getHeight(), max(lhs.getLength(), lhs.getWidth())) >
                max(rhs.getHeight(), max(rhs.getLength(), rhs.getWidth()));
     });
-    cout << place(rectangles.begin(), rectangles.end(), storage);
+    cout << place(rectangles.begin(), rectangles.end(), storage) << endl;
+    cout << totalVolume << ' ' << (storage.getWidth() * storage.getLength() * storage.getHeight());
     return 0;
 }

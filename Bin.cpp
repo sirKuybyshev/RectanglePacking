@@ -58,9 +58,9 @@ Coordinates Bin::findFit(Rectangle rectangle, const Coordinates &lastCube) {
 
 bool Bin::isFitting(const Rectangle &rectangle, const Coordinates &coordinates) {
     int x = coordinates.first(), y = coordinates.second(), z = coordinates.third();
-    if ((coordinates.first() + rectangle.getWidth() >= width) ||
-        ((coordinates.second() + rectangle.getLength()) >= length) ||
-        ((coordinates.third() + rectangle.getHeight()) >= height)) {
+    if ((coordinates.first() + rectangle.getWidth() > width) ||
+        ((coordinates.second() + rectangle.getLength()) > length) ||
+        ((coordinates.third() + rectangle.getHeight()) > height)) {
         return false;
     }
     while (x < coordinates.first() + rectangle.getWidth()) {
