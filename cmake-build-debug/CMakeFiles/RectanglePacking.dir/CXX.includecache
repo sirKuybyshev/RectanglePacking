@@ -6,10 +6,6 @@
 
 #IncludeRegexTransform: 
 
-/home/timofey/CLionProjects/RectanglePacking/Bin.cpp
-Bin.h
-/home/timofey/CLionProjects/RectanglePacking/Bin.h
-
 /home/timofey/CLionProjects/RectanglePacking/Bin.h
 algorithm
 -

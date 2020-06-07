@@ -2,6 +2,9 @@
 
 
 Bin::Bin(int w, int l, int h) : Rectangle(w, l, h) {
+    w = this->getWidth();
+    l = this->getLength();
+    h = this->getHeight();
     std::vector<std::vector<std::vector<CubeType>>> temp(w);
     for (int i = 0; i < w; i++) {
         temp[i].resize(l);

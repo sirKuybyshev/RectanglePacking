@@ -14,6 +14,7 @@ public:
     [[nodiscard]] int getWidth() const;
     [[nodiscard]] int getLength() const;
     bool Rotate();
+    bool Rotate_back();
 };
 
 

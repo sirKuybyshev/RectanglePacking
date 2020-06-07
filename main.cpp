@@ -4,30 +4,27 @@
 using namespace std;
 
 template<typename vectorIt>
-bool place(vectorIt begin, vectorIt end, Bin &storage, const Coordinates& lastBadCube = {0, 0, -1}) {
+bool place(vectorIt begin, vectorIt end, Bin &storage, const Coordinates &lastBadCube = {0, 0, -1}) {
     if (begin == end) {
         return true;
     }
+    bool success = false;
     Bin unperformedStorage = storage;
-    auto coord = storage.add(*begin, lastBadCube);
-    if (coord.first() == -1) {
-        return false;
-    } else {
-        begin++;
-        bool success = place(begin, end, storage);
-        while (!success) {
-            bool check = ((*begin).Rotate());
-            if (!check) {
-                begin--;
-            }
-            coord = unperformedStorage.add(*begin, coord);
-            if (coord.first() == -1) {
+    begin++;
+    while (!success) {
+        begin--;
+        storage = unperformedStorage;
+        Coordinates coordinates = storage.add((*begin), lastBadCube);
+        while (coordinates.first() == -1) {
+            if (!begin->Rotate()) {
                 return false;
             }
-            success = place(begin, end, unperformedStorage, coord);
+            coordinates = storage.add((*begin), {0, 0, -1});
         }
-        return success;
+        begin++;
+        success = place(begin, end, storage, coordinates);
     }
+    return true;
 }
 
 int main() {

@@ -19,3 +19,6 @@ Rectangle::Rectangle(int w, int l, int h) {
 bool Rectangle::Rotate() {
     return std::next_permutation(scales.begin(), scales.end());
 }
+bool Rectangle::Rotate_back() {
+    return std::prev_permutation(scales.begin(), scales.end());
+}
