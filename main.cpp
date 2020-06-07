@@ -28,34 +28,40 @@ bool place(vectorIt begin, vectorIt end, Bin &storage, const Coordinates &lastBa
 }
 
 int main() {
-    int height, width, length, totalWidth = 0, totalHeight = 0, totalLength = 0, totalVolume = 0;
+    int height, width, length, maxPossibleScale = 0, totalVolume = 0;
+    cout << "Input storage scale" << endl;
     cin >> width >> length >> height;
     Bin storage(width, length, height);
     vector<Rectangle> rectangles;
+    cout << "Input boxes scales" << endl
+         << "Then finish, please, print -1" << endl;
     while (true) {
-        cin >> width >> length >> height;
+        cin >> width;
         if (width == -1) {
             break;
         }
+        cin >> length >> height;
         rectangles.emplace_back(width, length, height);
-        totalWidth += width;
-        totalHeight += height;
-        totalLength += length;
+        maxPossibleScale += max(width, max(length, height));
         totalVolume += width * length * height;
     }
-    if (totalVolume > (storage.getWidth() * storage.getLength() * storage.getHeight())) {
-        cout << false;
+    if (totalVolume > (storage.getWidth() * storage.getLength() * storage.getHeight())) { //Проверяем, что объем ящиков не больше объема склада
+        cout << "Storage is small";
         return 0;
     }
-    if ((totalHeight < storage.getHeight()) && (totalLength < storage.getLength()) && (totalWidth < storage.getWidth())) {
-        cout << true;
+    if (maxPossibleScale <= min(storage.getWidth(), min(storage.getLength(), storage.getHeight()))) { //Проверяем, что ящики хотя бы при какой-то раскладке могут не поместиться
+        cout << "Storage is more than good";
         return 0;
     }
-    sort(rectangles.begin(), rectangles.end(), [](const Rectangle &lhs, const Rectangle &rhs) {
-        return max(lhs.getHeight(), max(lhs.getLength(), lhs.getWidth())) >
-               max(rhs.getHeight(), max(rhs.getLength(), rhs.getWidth()));
+    sort(rectangles.begin(), rectangles.end(), [](const Rectangle &lhs, const Rectangle &rhs) {//Сортируем по "неподходящести" для упаковки
+        return lhs.getHeight() + lhs.getLength() + lhs.getWidth() >
+               rhs.getHeight() + rhs.getLength() + rhs.getWidth();
     });
-    cout << place(rectangles.begin(), rectangles.end(), storage) << endl;
+    if (place(rectangles.begin(), rectangles.end(), storage)) {
+        cout << "Storage is OK" << endl;
+    } else {
+        cout << "Storage is too small" << endl;
+    }
     cout << totalVolume << ' ' << (storage.getWidth() * storage.getLength() * storage.getHeight());
     return 0;
 }

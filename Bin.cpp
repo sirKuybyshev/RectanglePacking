@@ -9,10 +9,7 @@ Bin::Bin(int w, int l, int h) : Rectangle(w, l, h) {
     for (int i = 0; i < w; i++) {
         temp[i].resize(l);
         for (int j = 0; j < l; j++) {
-            temp[i][j].resize(h);
-            for (int k = 0; k < h; k++) {
-                temp[i][j][k] = CubeType::FREE;
-            }
+            temp[i][j].resize(h, CubeType::FREE);
         }
     }
     elementaryCubes = temp;
@@ -43,7 +40,7 @@ void Bin::emplace(const Rectangle &rectangle, const Coordinates &coordinates) {
     }
 }
 
-Coordinates Bin::findFit(const Rectangle& rectangle, const Coordinates &lastCube) {
+Coordinates Bin::findFit(const Rectangle &rectangle, const Coordinates &lastCube) {
     Coordinates coord = lastCube.next(scales[0], scales[1], scales[2]);
     while (coord.first() != -1) {
         int x = coord.first(), y = coord.second(), z = coord.third();
