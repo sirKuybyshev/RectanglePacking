@@ -4,14 +4,20 @@
 using namespace std;
 
 template<typename vectorIt>
-bool place(vectorIt begin, vectorIt end, Bin &storage, const Coordinates &lastBadCube = {0, 0, -1}) {
+bool place(vectorIt begin, vectorIt end, Bin &storage, Coordinates lastBadCube = {0, 0, -1}) {
     if (begin == end) {
         return true;
     }
     bool success = false;
+    bool hadNotBeenPlaced = true;
     Bin unperformedStorage = storage;
     begin++;
     while (!success) {
+        if (!hadNotBeenPlaced) {
+            begin->Rotate();
+            lastBadCube = lastBadCube.next(storage.getWidth(), storage.getLength(), storage.getHeight());
+        }
+        hadNotBeenPlaced = false;
         begin--;
         storage = unperformedStorage;
         Coordinates coordinates = storage.add((*begin), lastBadCube);
