@@ -14,7 +14,6 @@ bool place(vectorIt begin, vectorIt end, Bin &storage, Coordinates lastBadCube =
     begin++;
     while (!success) {
         if (!hadNotBeenPlaced) {
-            begin->Rotate();
             lastBadCube = lastBadCube.next(storage.getWidth(), storage.getLength(), storage.getHeight());
         }
         hadNotBeenPlaced = false;
