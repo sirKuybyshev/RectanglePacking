@@ -19,12 +19,12 @@ bool place(vectorIt begin, vectorIt end, Bin &storage, Coordinates lastBadCube =
         hadNotBeenPlaced = false;
         begin--;
         storage = unperformedStorage;
-        Coordinates coordinates = storage.add((*begin), lastBadCube);
+        Coordinates coordinates = storage.Add((*begin), lastBadCube);
         while (coordinates.first() == -1) {
             if (!begin->Rotate()) {
                 return false;
             }
-            coordinates = storage.add((*begin), {0, 0, -1});
+            coordinates = storage.Add((*begin), {0, 0, -1});
         }
         begin++;
         success = place(begin, end, storage, coordinates);

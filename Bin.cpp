@@ -15,7 +15,7 @@ Bin::Bin(int w, int l, int h) : Rectangle(w, l, h) {
     elementaryCubes = temp;
 }
 
-Coordinates Bin::add(const Rectangle &rectangle, const Coordinates &coordinates) {
+Coordinates Bin::Add(const Rectangle &rectangle, const Coordinates &coordinates) {
     auto fit = findFit(rectangle, coordinates);
     if (fit.first() == -1) {
         return fit;

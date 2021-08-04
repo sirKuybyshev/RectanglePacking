@@ -21,7 +21,7 @@ private:
 
 public:
     Bin(int w, int l, int h);
-    Coordinates add(const Rectangle &rectangle, const Coordinates &coordinates);
+    Coordinates Add(const Rectangle &rectangle, const Coordinates &coordinates);
 };
 
 
